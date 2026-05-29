@@ -3,46 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости | Информационный портал</title>
+    <meta name="description" content="Романтический сайт-поздравление с годовщиной — 7 месяцев вместе.">
+    <title>7 месяцев вместе ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Экран загрузки -->
-    <div class="loading-screen">
-        <div class="loader"></div>
-        <p>Загрузка...</p>
+    <div class="preloader" aria-live="polite">
+        <div class="preloader__heart">❤️</div>
+        <p>Готовлю для тебя маленькую вселенную любви...</p>
     </div>
 
-    <!-- Заголовок -->
-    <header>
-        <h1>Актуальные новости</h1>
-    </header>
+    <div class="ambient" aria-hidden="true">
+        <canvas id="starsCanvas"></canvas>
+        <div class="aurora aurora--one"></div>
+        <div class="aurora aurora--two"></div>
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="particles" id="particles"></div>
+    </div>
 
-    <!-- Основной контент -->
+    <div class="cursor-heart" id="cursorHeart" aria-hidden="true">♡</div>
+
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Включить романтическую музыку">
+        <span class="music-toggle__icon">♪</span>
+        <span id="musicToggleText">Включить музыку</span>
+    </button>
+
     <main>
-        <section class="news">
-            <article>
-                <h2>🚀 Учёные нашли новый источник энергии!</h2>
-                <p>Группа исследователей из MIT открыла неизвестный ранее вид топлива...</p>
-            </article>
+        <section class="hero section" id="top">
+            <p class="eyebrow reveal">Наша маленькая вечность</p>
+            <h1 class="hero__title reveal">Уже 7 месяцев вместе ❤️</h1>
+            <p class="hero__subtitle reveal">Каждый день рядом с тобой делает мою жизнь счастливее.</p>
+            <div class="hero__actions reveal">
+                <a class="btn btn--primary" href="#story">Наша история</a>
+                <button class="btn btn--ghost" id="loveExplosionBtn" type="button">Нажми сюда ❤️</button>
+            </div>
+            <div class="hero__quote reveal" id="randomQuote">Ты — мой самый красивый случай.</div>
+        </section>
 
-            <article>
-                <h2>⚽ Футбольные сенсации!</h2>
-                <p>Барселона проиграла со счётом 3:0, фанаты в шоке...</p>
-            </article>
+        <section class="counter section glass reveal" aria-labelledby="counter-title">
+            <p class="eyebrow">Мы вместе уже</p>
+            <h2 id="counter-title">Каждая секунда с тобой бесценна</h2>
+            <div class="counter__grid" id="relationshipCounter">
+                <div><strong data-unit="days">0</strong><span>дней</span></div>
+                <div><strong data-unit="hours">0</strong><span>часов</span></div>
+                <div><strong data-unit="minutes">0</strong><span>минут</span></div>
+                <div><strong data-unit="seconds">0</strong><span>секунд</span></div>
+            </div>
+            <p class="counter__hint">Дату начала легко изменить в переменной <code>RELATIONSHIP_START_DATE</code> в файле script.js.</p>
+        </section>
 
-            <article>
-                <h2>📌 Ваш регион в центре внимания</h2>
-                <p>Новый законопроект изменит правила...</p>
-            </article>
+        <section class="gallery section" aria-labelledby="gallery-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Фотоальбом</p>
+                <h2 id="gallery-title">Твои фотографии в моём сердце</h2>
+                <p>Замени изображения в папке <strong>images</strong>: love-1.svg, love-2.svg, love-3.svg и love-4.svg.</p>
+            </div>
+            <div class="gallery__grid">
+                <figure class="polaroid reveal"><img src="images/love-1.svg" alt="Любимое фото 1"><figcaption>Твоя улыбка</figcaption></figure>
+                <figure class="polaroid reveal"><img src="images/love-2.svg" alt="Любимое фото 2"><figcaption>Наше тепло</figcaption></figure>
+                <figure class="polaroid reveal"><img src="images/love-3.svg" alt="Любимое фото 3"><figcaption>Мой уют</figcaption></figure>
+                <figure class="polaroid reveal"><img src="images/love-4.svg" alt="Любимое фото 4"><figcaption>Моя любовь</figcaption></figure>
+            </div>
+        </section>
 
-            <article>
-                <h2>⛅ Какая погода будет завтра?</h2>
-                <p>Синоптики предупреждают о резком изменении температуры...</p>
-            </article>
+        <section class="letter section glass reveal" aria-labelledby="letter-title">
+            <p class="eyebrow">Письмо любви</p>
+            <h2 id="letter-title">Для самой дорогой девушки</h2>
+            <p>Любимая, за эти 7 месяцев ты стала самым важным человеком в моей жизни. С тобой даже обычные дни превращаются в маленькие праздники, а тишина становится спокойной и тёплой.</p>
+            <p>Спасибо тебе за улыбки, поддержку, заботу, нежность и моменты счастья, которые я храню как самые драгоценные воспоминания. Я ценю каждый день рядом с тобой, каждое сообщение, каждый взгляд и каждую секунду, в которой есть ты.</p>
+            <p>Я надеюсь, что впереди нас ждёт ещё много счастливых месяцев и лет вместе — с мечтами, путешествиями, объятиями, смехом и историей, которую мы будем писать только вдвоём.</p>
+        </section>
+
+        <section class="timeline section" id="story" aria-labelledby="story-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Наша история</p>
+                <h2 id="story-title">Моменты, с которых началась любовь</h2>
+            </div>
+            <div class="timeline__line">
+                <article class="timeline__item reveal"><span>01</span><h3>День знакомства</h3><p>День, когда мир стал немного ярче, потому что в нём появилась ты.</p></article>
+                <article class="timeline__item reveal"><span>02</span><h3>Первый разговор</h3><p>Слова, после которых захотелось узнавать тебя всё больше и больше.</p></article>
+                <article class="timeline__item reveal"><span>03</span><h3>Первый совместный день</h3><p>Тёплое воспоминание, которое до сих пор заставляет улыбаться.</p></article>
+                <article class="timeline__item reveal"><span>04</span><h3>Сегодня — 7 месяцев вместе</h3><p>Счастливая глава, но точно не финал. Это только начало.</p></article>
+            </div>
+        </section>
+
+        <section class="reasons section" aria-labelledby="reasons-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Почему я тебя люблю</p>
+                <h2 id="reasons-title">Шесть причин из бесконечности</h2>
+            </div>
+            <div class="reasons__grid">
+                <article class="reason-card reveal">🌸<h3>Твоя улыбка</h3><p>Она делает любой день светлее.</p></article>
+                <article class="reason-card reveal">🤍<h3>Твоя доброта</h3><p>В ней столько тепла, что рядом спокойно.</p></article>
+                <article class="reason-card reveal">🫶<h3>Твоя забота</h3><p>Ты умеешь быть рядом именно так, как нужно.</p></article>
+                <article class="reason-card reveal">✨<h3>Твой характер</h3><p>В нём сила, нежность и невероятная красота.</p></article>
+                <article class="reason-card reveal">👀<h3>Твои глаза</h3><p>В них хочется смотреть и забывать обо всём.</p></article>
+                <article class="reason-card reveal">💖<h3>Ты делаешь меня счастливым</h3><p>Просто потому, что ты есть.</p></article>
+            </div>
+        </section>
+
+        <section class="memory-book section glass reveal" aria-labelledby="book-title">
+            <p class="eyebrow">Книга воспоминаний</p>
+            <h2 id="book-title">Перелистни нашу историю</h2>
+            <div class="book" id="memoryBook">
+                <div class="book__page is-active"><h3>Глава 1</h3><p>Одна встреча изменила настроение целой жизни.</p></div>
+                <div class="book__page"><h3>Глава 2</h3><p>Разговоры стали длиннее, а улыбки — чаще.</p></div>
+                <div class="book__page"><h3>Глава 3</h3><p>7 месяцев — и я всё сильнее понимаю, как мне повезло.</p></div>
+            </div>
+            <button class="btn btn--primary" id="nextPageBtn" type="button">Следующая страница</button>
+        </section>
+
+        <section class="love-notes section" aria-labelledby="notes-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Floating Love Notes</p>
+                <h2 id="notes-title">Маленькие признания</h2>
+            </div>
+            <div class="notes" id="loveNotes"></div>
+            <button class="btn btn--ghost secret-trigger" id="secretButton" type="button">✦</button>
+        </section>
+
+        <section class="finale section reveal" aria-labelledby="finale-title">
+            <p class="eyebrow">Навсегда в моём сердце</p>
+            <h2 id="finale-title">Я люблю тебя ❤️</h2>
+            <p>Спасибо за эти прекрасные 7 месяцев вместе.</p>
+            <small>Это только начало нашей истории...</small>
         </section>
     </main>
+
+    <div class="modal" id="imageModal" aria-hidden="true" role="dialog" aria-label="Просмотр фотографии">
+        <button class="modal__close" type="button" aria-label="Закрыть">×</button>
+        <img alt="Увеличенная фотография">
+    </div>
+
+    <div class="love-overlay" id="loveOverlay" aria-hidden="true">
+        <div class="love-overlay__message">Спасибо, что ты есть в моей жизни.</div>
+    </div>
+
+    <audio id="romanticAudio" loop preload="none">
+        <source src="music/romantic.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 </body>
