@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffd6e8"/><stop offset=".55" stop-color="#f7c7ff"/><stop offset="1" stop-color="#fff0c8"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="900" height="1200" fill="url(#g)"/>
+  <circle cx="200" cy="220" r="140" fill="#fff" opacity=".22"/>
+  <circle cx="720" cy="850" r="210" fill="#b5179e" opacity=".16"/>
+  <path d="M450 760 C260 600 190 455 285 360 C350 295 425 330 450 390 C475 330 550 295 615 360 C710 455 640 600 450 760Z" fill="#ff4d6d" opacity=".8" filter="url(#glow)"/>
+  <text x="450" y="980" text-anchor="middle" font-size="54" font-family="Georgia" fill="#6d214f">Твоё фото здесь</text>
+  <text x="450" y="1048" text-anchor="middle" font-size="30" font-family="Arial" fill="#7c2d5a">замени файл images/love-4.svg</text>
+</svg>

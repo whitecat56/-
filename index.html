@@ -2,48 +2,268 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости | Информационный портал</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#05020a">
+    <meta name="description" content="Интерактивная love story Самиржона и Парижон — 7 месяцев вместе.">
+    <title>История Самиржона и Парижон ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Экран загрузки -->
-    <div class="loading-screen">
-        <div class="loader"></div>
-        <p>Загрузка...</p>
+    <div class="cinema-intro" id="cinemaIntro" aria-live="polite">
+        <div class="intro-grain"></div>
+        <div class="intro-copy" id="introCopy">Для самой прекрасной девушки ❤️</div>
+        <button class="intro-skip" id="introSkip" type="button">Начать историю</button>
     </div>
 
-    <!-- Заголовок -->
-    <header>
-        <h1>Актуальные новости</h1>
-    </header>
+    <div class="ambient" aria-hidden="true">
+        <canvas id="starsCanvas"></canvas>
+        <div class="aurora aurora--rose"></div>
+        <div class="aurora aurora--violet"></div>
+        <div class="falling-layer" id="heartLayer"></div>
+        <div class="falling-layer" id="petalLayer"></div>
+        <div class="falling-layer" id="sparkLayer"></div>
+        <div class="butterflies" id="butterflies"></div>
+    </div>
 
-    <!-- Основной контент -->
-    <main>
-        <section class="news">
-            <article>
-                <h2>🚀 Учёные нашли новый источник энергии!</h2>
-                <p>Группа исследователей из MIT открыла неизвестный ранее вид топлива...</p>
-            </article>
+    <button class="audio-orb" id="audioToggle" type="button" aria-label="Включить музыку">
+        <span>♪</span>
+        <small id="audioLabel">Музыка</small>
+    </button>
 
-            <article>
-                <h2>⚽ Футбольные сенсации!</h2>
-                <p>Барселона проиграла со счётом 3:0, фанаты в шоке...</p>
-            </article>
+    <button class="secret-heart" id="secretHeart" type="button" aria-label="Секретное сердечко">❤️</button>
 
-            <article>
-                <h2>📌 Ваш регион в центре внимания</h2>
-                <p>Новый законопроект изменит правила...</p>
-            </article>
+    <main id="app">
+        <section class="story-scene hero-scene" data-scene="0">
+            <div class="scene-card hero-card" data-aos="zoom-in">
+                <p class="kicker">Персональный фильм</p>
+                <h1>Самиржон & Парижон</h1>
+                <p class="hero-line">История, которая началась тихо, а стала самым тёплым чудом.</p>
+                <a class="premium-btn" href="#storyJourney">Смотреть нашу историю</a>
+            </div>
+            <div class="scroll-hint">Листай вниз <span>⌄</span></div>
+        </section>
 
-            <article>
-                <h2>⛅ Какая погода будет завтра?</h2>
-                <p>Синоптики предупреждают о резком изменении температуры...</p>
+        <section class="story-scene" id="storyJourney" data-scene="1">
+            <article class="scene-card split-card" data-aos="fade-up">
+                <span class="chapter">Сцена 01</span>
+                <h2>Первое знакомство</h2>
+                <p>Всё началось как обычный момент, но именно он стал первой страницей нашей истории.</p>
+                <div class="scene-visual moon-phone">✦</div>
             </article>
+        </section>
+
+        <section class="story-scene" data-scene="2">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 02</span>
+                <h2>Сардорлик</h2>
+                <p>Тот период, где появились первые поводы замечать друг друга чуть внимательнее.</p>
+                <div class="chat-bubbles">
+                    <span>Салом 🙂</span>
+                    <span>Как день?</span>
+                    <span>Я ждал твоего ответа...</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="story-scene" data-scene="3">
+            <article class="scene-card messages-card" data-aos="fade-up">
+                <span class="chapter">Сцена 03</span>
+                <h2>Первые разговоры</h2>
+                <p>Сначала просто слова. Потом — привычка ждать именно твоё сообщение.</p>
+                <div class="message-stream" id="messageStream"></div>
+            </article>
+        </section>
+
+        <section class="story-scene time-scene" data-scene="4">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 04</span>
+                <h2>19:35</h2>
+                <p>Время, которое стало маленьким символом ожидания, улыбки и тепла.</p>
+                <div class="big-time">19:35</div>
+            </article>
+        </section>
+
+        <section class="story-scene tashkent-scene" data-scene="5">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 05</span>
+                <h2>Поездка в Ташкент</h2>
+                <p>Город, дорога, новые эмоции — и ощущение, что между нами появляется что-то особенное.</p>
+                <div class="route-line"><i></i><b>Самарканд</b><b>Ташкент</b></div>
+            </article>
+        </section>
+
+        <section class="story-scene" data-scene="6">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 06</span>
+                <h2>Первые намёки</h2>
+                <p>Когда сердце уже всё понимало, но слова ещё боялись сказать правду вслух.</p>
+                <div class="hint-words"><span>взгляд</span><span>улыбка</span><span>намёк</span><span>тишина</span></div>
+            </article>
+        </section>
+
+        <section class="story-scene confession-scene" data-scene="7">
+            <article class="scene-card" data-aos="zoom-in">
+                <span class="chapter">Сцена 07</span>
+                <h2>Признание</h2>
+                <p>Момент, когда стало ясно: это не просто симпатия. Это любовь.</p>
+                <button class="premium-btn" id="confessionBtn" type="button">Открыть признание</button>
+                <p class="confession-text" id="confessionText">Парижон, я понял, что люблю тебя ❤️</p>
+            </article>
+        </section>
+
+        <section class="story-scene aviation-scene" data-scene="8">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 08</span>
+                <h2>Встречи в авиации</h2>
+                <p>Места становятся особенными, когда там есть воспоминания о тебе.</p>
+                <div class="plane-path">✈</div>
+            </article>
+        </section>
+
+        <section class="story-scene" data-scene="9">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 09</span>
+                <h2>Прогулки</h2>
+                <p>Мы шли рядом, а внутри становилось всё спокойнее: рядом именно тот человек.</p>
+                <div class="footsteps"><span></span><span></span><span></span><span></span></div>
+            </article>
+        </section>
+
+        <section class="story-scene hand-scene" data-scene="10">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 10</span>
+                <h2>Удержанная рука</h2>
+                <p>Иногда один жест говорит больше, чем тысячи сообщений.</p>
+                <div class="hands">🤝</div>
+            </article>
+        </section>
+
+        <section class="story-scene" data-scene="11">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Сцена 11</span>
+                <h2>Ревность</h2>
+                <p>Даже она была доказательством: ты стала слишком дорогой, чтобы быть просто человеком рядом.</p>
+                <div class="jealousy-pulse">💗</div>
+            </article>
+        </section>
+
+        <section class="story-scene love-scene" data-scene="12">
+            <article class="scene-card" data-aos="zoom-in">
+                <span class="chapter">Сцена 12</span>
+                <h2>Любовь</h2>
+                <p>Она стала не громким словом, а ежедневным выбором — заботиться, ждать, беречь и любить.</p>
+            </article>
+        </section>
+
+        <section class="story-scene today-scene" data-scene="13">
+            <article class="scene-card counter-card" data-aos="fade-up">
+                <span class="chapter">Сегодня</span>
+                <h2>7 месяцев вместе</h2>
+                <p>Мы уже вместе:</p>
+                <div class="counter-grid" id="relationshipCounter">
+                    <div><strong data-unit="days">0</strong><span>дней</span></div>
+                    <div><strong data-unit="hours">0</strong><span>часов</span></div>
+                    <div><strong data-unit="minutes">0</strong><span>минут</span></div>
+                    <div><strong data-unit="seconds">0</strong><span>секунд</span></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="media-section story-scene" id="memories">
+            <div class="section-heading" data-aos="fade-up">
+                <span class="chapter">Фото и видео</span>
+                <h2>Cinematic gallery</h2>
+                <p>Добавляй файлы в <b>images/</b> и <b>videos/</b>. Скрипт ищет популярные имена и мягко скрывает отсутствующие файлы.</p>
+            </div>
+            <div class="swiper media-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper" id="mediaGallery"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="book-section story-scene">
+            <div class="section-heading" data-aos="fade-up">
+                <span class="chapter">Интерактивная книга</span>
+                <h2>Книга любви</h2>
+            </div>
+            <div class="swiper book-swiper" data-aos="zoom-in">
+                <div class="swiper-wrapper">
+                    <article class="swiper-slide book-page"><small>Глава 1</small><h3>Сентябрь...</h3><p>Месяц, где всё началось с простого знакомства.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 2</small><h3>Первые сообщения...</h3><p>Каждый диалог становился теплее предыдущего.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 3</small><h3>19:35...</h3><p>Время ожидания, которое стало нашим маленьким знаком.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 4</small><h3>Ташкент...</h3><p>Поездка, где чувства стали ближе и смелее.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 5</small><h3>Я понял, что люблю тебя...</h3><p>Сердце сказало это раньше, чем губы.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 6</small><h3>Авиация...</h3><p>Встречи, которые теперь невозможно забыть.</p></article>
+                    <article class="swiper-slide book-page"><small>Глава 7</small><h3>7 месяцев вместе...</h3><p>Самая красивая глава — та, которую мы пишем сейчас.</p></article>
+                    <article class="swiper-slide book-page hidden-chapter" id="hiddenChapter"><small>Секрет</small><h3>LOVE</h3><p>Парижон, ты — нежность, которую я хочу беречь всегда.</p></article>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="reasons-section story-scene">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">100 причин</span>
+                <h2>Почему я люблю тебя</h2>
+                <div class="reason-display" id="reasonDisplay">Нажми — и я покажу одну из 100 причин.</div>
+                <button class="premium-btn" id="reasonBtn" type="button">Показать причину</button>
+                <p class="reason-count" id="reasonCount">0 / 100</p>
+            </article>
+        </section>
+
+        <section class="future-section story-scene">
+            <article class="scene-card" data-aos="fade-up">
+                <span class="chapter">Капсула будущего</span>
+                <h2>Открой через 7 лет</h2>
+                <button class="premium-btn" id="futureBtn" type="button">Открыть письмо</button>
+                <p class="future-letter" id="futureLetter"></p>
+            </article>
+        </section>
+
+        <section class="dreams-section story-scene">
+            <div class="section-heading" data-aos="fade-up">
+                <span class="chapter">Мечты</span>
+                <h2>Что я хочу пережить вместе с тобой</h2>
+            </div>
+            <div class="dream-grid">
+                <article data-aos="fade-up">🌍<h3>Путешествия</h3><p>Города, дороги и новые места, где мы будем рядом.</p></article>
+                <article data-aos="fade-up" data-aos-delay="80">🌙<h3>Прогулки</h3><p>Вечера, в которых хватает только твоей руки.</p></article>
+                <article data-aos="fade-up" data-aos-delay="160">📸<h3>Новые воспоминания</h3><p>Фотографии, видео, смешные истории и наши маленькие традиции.</p></article>
+                <article data-aos="fade-up" data-aos-delay="240">💫<h3>Счастливые моменты</h3><p>Больше улыбок, тепла, заботы и любви.</p></article>
+            </div>
+        </section>
+
+        <section class="finale-scene story-scene" id="finale">
+            <div class="final-photo" id="finalPhoto" data-aos="zoom-in"></div>
+            <div class="final-lines" data-aos="fade-up">
+                <p>Спасибо за эти прекрасные 7 месяцев ❤️</p>
+                <p>Я люблю тебя, Парижон ❤️</p>
+                <p>И буду любить завтра...</p>
+                <p>...через год...</p>
+                <p>...через 7 лет...</p>
+                <p>...и ещё дольше ❤️</p>
+            </div>
         </section>
     </main>
 
+    <div class="modal-message" id="modalMessage" aria-hidden="true">
+        <div class="modal-message__card" id="modalMessageText"></div>
+    </div>
+
+    <audio id="pianoAudio" loop preload="none">
+        <source src="music/romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
