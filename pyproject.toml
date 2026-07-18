@@ -1,0 +1,25 @@
+[project]
+name = "melody-ai"
+version = "1.0.0"
+description = "Enterprise-grade Telegram music discovery bot"
+requires-python = ">=3.12"
+dependencies = [
+"aiogram>=3.7", "fastapi>=0.111", "uvicorn[standard]>=0.30", "sqlalchemy[asyncio]>=2.0", "asyncpg>=0.29", "alembic>=1.13", "redis>=5", "pydantic>=2.7", "pydantic-settings>=2.3", "python-jose[cryptography]>=3.3", "passlib[bcrypt]>=1.7", "httpx>=0.27", "aiofiles>=23", "apscheduler>=3.10", "structlog>=24", "orjson>=3", "slowapi>=0.1"]
+[project.optional-dependencies]
+dev=["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.5", "black>=24"]
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["GPS_Ground_Station", "project", "arduino", "music", "images", "drone_command_center.py"]
+[tool.ruff.lint]
+select = ["E","F","I","B","UP","ASYNC","C4","N","SIM","RUF"]
+ignore = ["B008", "RUF001", "E501"]
+[tool.pytest.ini_options]
+asyncio_mode="auto"
+testpaths=["tests"]
+[tool.setuptools.packages.find]
+include = ["melody_ai*"]
+exclude = ["GPS_Ground_Station*", "project*", "music*", "arduino*"]
