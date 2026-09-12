@@ -1,0 +1,1 @@
+{"version":"1.0.0","datasets":[{"id":"cities","name":"Cities & places","version":"1.0.0","status":"ready"},{"id":"countries","name":"Countries","version":"1.0.0","status":"ready"},{"id":"roads","name":"Road network","version":"1.0.0","status":"not installed"},{"id":"textures","name":"Procedural globe textures","version":"1.0.0","status":"ready"}]}
